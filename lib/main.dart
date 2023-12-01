@@ -1,34 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:project_app/block/lesson_provider.dart';
 import 'package:project_app/block/trainer_provider.dart';
 import 'package:project_app/block/user_provider.dart';
-import 'package:project_app/common_widget/card_review.dart';
-import 'package:project_app/common_widget/custom_chip.dart';
-import 'package:project_app/common_widget/rate_custom.dart';
-import 'package:project_app/common_widget/trainer_card.dart';
-import 'package:project_app/constant/list_data_start.dart';
 import 'package:project_app/screens/detai_trainer_screen.dart';
-import 'package:project_app/screens/fitness_trainers_screen.dart';
-import 'package:project_app/screens/home_screen.dart';
 import 'package:project_app/screens/ratting_screen.dart';
-import 'package:project_app/screens/screen_auth/auth_screen.dart';
-import 'package:project_app/screens/screen_auth/login_screen.dart';
-import 'package:project_app/screens/screen_infor/age_screen.dart';
-import 'package:project_app/screens/detai_lesson_screen.dart';
-import 'package:project_app/screens/screen_infor/gender_screen.dart';
-import 'package:project_app/screens/screen_infor/goal_screen.dart';
-import 'package:project_app/screens/screen_infor/height_screen.dart';
-import 'package:project_app/screens/screen_infor/level_screen.dart';
-import 'package:project_app/screens/screen_infor/weight_screen.dart';
-import 'package:project_app/screens/screen_option.dart';
-import 'package:project_app/screens/start_screen.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:project_app/screens/submit_screen.dart';
-import 'package:project_app/screens/workout_category.dart';
+import 'package:project_app/screens/write_comment_screen.dart';
 import 'package:project_app/theme/custome_theme.dart';
-import 'package:project_app/theme/provider_theme.dart';
 import 'package:provider/provider.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,7 +45,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeDataClass.darkTheme,
       home:  Scaffold(
         backgroundColor: Color.fromARGB(255, 28, 28, 30),
-          body: Text('hello'),
+          body: WriteCommentScreen(),
       ),
     );
   }
