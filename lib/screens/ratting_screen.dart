@@ -7,6 +7,7 @@ import 'package:project_app/common_widget/group_button.dart';
 import 'package:project_app/common_widget/rate_custom.dart';
 import 'package:project_app/constant/index.dart';
 import 'package:project_app/constant/list_data_start.dart';
+import 'package:project_app/screens/write_comment_screen.dart';
 
 class RattingScreen extends StatefulWidget{
   const RattingScreen({super.key});
@@ -35,7 +36,9 @@ class _RattingScreenState extends State<RattingScreen>{
       ),
       bottomNavigationBar: SizedBox(
         height: 100,
-          child: BottomButton(title: "Write a Review", fn: (){},heightOver: 120,)),
+          child: BottomButton(title: "Write a Review", fn: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WriteCommentScreen(),));
+          },heightOver: 120,)),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 15),
         child: Column(

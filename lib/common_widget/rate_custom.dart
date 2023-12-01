@@ -50,57 +50,51 @@ class RateCustom extends StatelessWidget {
     return Column(
       children: [
        if(toplables) Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 22,vertical: 5),
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: topTitle(titles),
           ),
         ),
-        SizedBox(
-          width: double.infinity,
-          height: height,
-          child:
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              if (label != null)
-                Text(
-                  label!,
-                  style: subLabel,
-                ),
-              const SizedBox(
-                width: 5,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            if (label != null)
+              Text(
+                label!,
+                style: subLabel,
               ),
-              Expanded(
-                child: SliderTheme(
-                  data: SliderTheme.of(context).copyWith(
-                      trackHeight: size,
-                      valueIndicatorColor: Colors.white,
-                      tickMarkShape:
-                          RoundSliderTickMarkShape(tickMarkRadius: 0),
-                      thumbShape: thumShape
-                          ? RoundSliderThumbShape(
-                              enabledThumbRadius: height / 2.5, elevation: 0)
-                          : SliderComponentShape.noThumb,
-                      overlayShape: SliderComponentShape.noOverlay),
-                  child: Slider(
-                    value: ratting,
-                    min: min,
-                    max: max,
-                    activeColor: colorTrack,
-                    inactiveColor: Colors.green,
-                    divisions: division,
-                    // label: ratting.toString(),
-                    onChanged: (value) {
-                      if (onRatting != null) {
-                        onRatting!(value);
-                      }
-                    },
-                  ),
+            const SizedBox(
+              width: 5,
+            ),
+            Expanded(
+              child: SliderTheme(
+                data: SliderTheme.of(context).copyWith(
+                    trackHeight: size,
+                    valueIndicatorColor: Colors.white,
+                    tickMarkShape:const RoundSliderTickMarkShape(tickMarkRadius: 0),
+                    thumbShape: thumShape
+                        ? RoundSliderThumbShape(
+                            enabledThumbRadius: size / 1.9, elevation: 0)
+                        : SliderComponentShape.noThumb,
+                    overlayShape: SliderComponentShape.noOverlay),
+                child: Slider(
+                  value: ratting,
+                  min: min,
+                  max: max,
+                  activeColor: colorTrack,
+                  inactiveColor: Colors.green,
+                  divisions: division,
+                  // label: ratting.toString(),
+                  onChanged: (value) {
+                    if (onRatting != null) {
+                      onRatting!(value);
+                    }
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
