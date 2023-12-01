@@ -9,6 +9,8 @@ import 'package:project_app/constant/index.dart';
 import 'package:project_app/constant/list_data_start.dart';
 
 class RattingScreen extends StatefulWidget{
+  const RattingScreen({super.key});
+
   @override
   State<StatefulWidget> createState() {
     return _RattingScreenState();
@@ -56,7 +58,7 @@ class _RattingScreenState extends State<RattingScreen>{
                    padding: const EdgeInsets.only(left: 30),
                    child: const Column(
                      children: [
-                       RateCustom(label:'5',ratting: 80, size: 2,height: 10,),
+                       RateCustom(label:'5',ratting: 80, size: 2,height: 10, thumShape: false),
                        RateCustom(label:'4',ratting: 50, size: 2,height: 10,),
                        RateCustom(label:'3',ratting: 30, size: 2,height: 10,),
                        RateCustom(label:'2',ratting: 40, size: 2,height: 10,),
