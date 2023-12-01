@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeDataClass.darkTheme,
       darkTheme: ThemeDataClass.darkTheme,
-      home:  Scaffold(
+      home:  const Scaffold(
         backgroundColor: Color.fromARGB(255, 28, 28, 30),
-          body: WriteCommentScreen(),
+          body: RattingScreen(),
       ),
     );
   }

@@ -49,9 +49,9 @@ class RateCustom extends StatelessWidget {
 
     return Column(
       children: [
-        Padding(
+       if(toplables) Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
+          child:  Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: topTitle(titles),
           ),
@@ -59,7 +59,8 @@ class RateCustom extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           height: height,
-          child: Row(
+          child:
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               if (label != null)

@@ -58,7 +58,7 @@ class _RattingScreenState extends State<RattingScreen>{
                    padding: const EdgeInsets.only(left: 30),
                    child: const Column(
                      children: [
-                       RateCustom(label:'5',ratting: 80, size: 2,height: 10, thumShape: false),
+                       RateCustom(label:'5',ratting: 80, size: 2,height: 10),
                        RateCustom(label:'4',ratting: 50, size: 2,height: 10,),
                        RateCustom(label:'3',ratting: 30, size: 2,height: 10,),
                        RateCustom(label:'2',ratting: 40, size: 2,height: 10,),
