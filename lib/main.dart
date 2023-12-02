@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:project_app/block/lesson_provider.dart';
 import 'package:project_app/block/trainer_provider.dart';
 import 'package:project_app/block/user_provider.dart';
+import 'package:project_app/screens/appointment_screen.dart';
 import 'package:project_app/screens/detai_trainer_screen.dart';
 import 'package:project_app/screens/ratting_screen.dart';
 import 'package:project_app/screens/write_comment_screen.dart';
@@ -43,9 +44,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeDataClass.darkTheme,
       darkTheme: ThemeDataClass.darkTheme,
-      home:  const Scaffold(
+      home:   Scaffold(
         backgroundColor: Color.fromARGB(255, 28, 28, 30),
-          body: RattingScreen(),
+          body: AppointmentScreen(
+              trainerName: 'Emily Kevin',
+              specializeIn: 'High Intensity Training',
+              experience: '2',
+              evaluate: '4.9',
+              avatar: 'https://res.cloudinary.com/dwu92ycra/image/upload/v1700927161/Gym-app/Image_21_mqhq4n.png',
+              fn: (){} ),
       ),
     );
   }

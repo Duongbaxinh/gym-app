@@ -48,6 +48,7 @@ dependencies:
   avatar_stack: ^1.2.0
   syncfusion_flutter_sliders: ^23.2.6
   text_area: ^0.0.3
+  table_calendar: ^3.0.9
 
 dev_dependencies:
   flutter_test:

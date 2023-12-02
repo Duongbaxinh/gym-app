@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:project_app/common_widget/custom_chip.dart';
 import 'package:project_app/constant/index.dart';
 
 class TrainerCard extends StatelessWidget{
@@ -26,7 +27,7 @@ class TrainerCard extends StatelessWidget{
     TextStyle subStyle = Theme.of(context).textTheme.subtitle1!.copyWith(color:yelSchema,fontWeight: FontWeight.normal );
     return Container(
      height: 96,
-      color:  Theme.of(context).colorScheme.onSurface,
+      color:  Theme.of(context).colorScheme.onSecondaryContainer,
       child:
       Padding(
         padding: const EdgeInsets.all(10),
@@ -34,7 +35,7 @@ class TrainerCard extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             CircleAvatar(backgroundImage: NetworkImage(avatar),radius:35 ),
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
             Expanded(
               flex: 2,
               child: Column(
@@ -45,19 +46,20 @@ class TrainerCard extends StatelessWidget{
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                     Text(trainerName,style: titleStyle,),
-                    SizedBox(width: 5,),
+                    const SizedBox(width: 10,),
+                    const SizedBox(width: 10,),
                     SizedBox(
-                      height: 30,
-                      child: Chip(
-                        backgroundColor: yelSchema,
-                          label: Text(evaluate,style: chipStyle.copyWith(color: Colors.black),)),
+                      height: 25,
+                      child: ChipCustom(
+                     label: evaluate,
+                      ),
                     )],),
                   Text(specializeIn,style: subStyle,),
                   Text('$experience years experiences',style: subStyle,),
                 ],
               ),
             ),
-            IconButton(onPressed: fn, icon: ImageIcon(NetworkImage(arrowRight)))
+            IconButton(onPressed: fn, icon: ImageIcon(NetworkImage(arrowRight))),
           ],
         ),
       )
