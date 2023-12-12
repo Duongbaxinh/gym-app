@@ -54,8 +54,9 @@ class _SubmitScreenState extends State<SubmitScreen>{
                 sub: 'Pay monthly, cancel any time',
                 price: '19.99'),
           ),
-          SizedBox(
-            height: 80,
+          Container(
+            margin: const EdgeInsets.only(top: 30),
+            height: 60,
             width: 250,
             child: ButtonCustom(
               title: 'Subscribe now',

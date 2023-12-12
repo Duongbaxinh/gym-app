@@ -16,8 +16,7 @@ class CustomeIconButton extends StatelessWidget{
         hoverColor: Colors.transparent,
           splashColor: Colors.transparent,
           color: Colors.white,
-
-          onPressed: fn,
+          onPressed: ()=>{Navigator.pop(context)},
           icon:ImageIcon(NetworkImage(imageIcon))
       ),
     );

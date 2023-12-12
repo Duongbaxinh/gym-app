@@ -30,7 +30,7 @@ class CardNewWorkout extends StatelessWidget{
           ListTile(
             contentPadding: EdgeInsets.all(0),
             title: Text(title,style: titleStyle,),
-            subtitle: Text(sub,style: subStyle,) ,
+            subtitle: Text(sub ?? 'unknown',style: subStyle,) ,
           )
         ],
       ),

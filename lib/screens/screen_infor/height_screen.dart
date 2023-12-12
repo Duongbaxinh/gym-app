@@ -49,29 +49,31 @@ class _HeightScreenState extends State<HeightScreen>{
   }
   @override
   Widget build(BuildContext context) {
-    return Consumer<UserProvide>(builder:(context, userProvide, child) =>
-        ScreenStart(
-            title: 'What’s your height?',
-            sub1: 'This helps us create your personalized plan',
-            sub2: '',
-            body_widget: [
-              SizedBox(
-                height: 350,
-                child: WheelCustom(
-                  widthItem: 80,
-                    start: 160,
-                    end: 250,
-                    active: heightActive,
-                    fn: setActive),
-              ),
-            ],
-            bottom: ButtonCustom(title: 'Next', fn:(){
-              userProvide.setInfoUser('height', heightActive);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Goal(),));
-            },)
-        )
-      ,);
+    return Scaffold(
+      body: Consumer<UserProvide>(builder:(context, userProvide, child) =>
+          ScreenStart(
+              title: 'What’s your height?',
+              sub1: 'This helps us create your personalized plan',
+              sub2: '',
+              body_widget: [
+                SizedBox(
+                  height: 350,
+                  child: WheelCustom(
+                    widthItem: 80,
+                      start: 160,
+                      end: 250,
+                      active: heightActive,
+                      fn: setActive),
+                ),
+              ],
+              bottom: ButtonCustom(title: 'Next', fn:(){
+                userProvide.setInfoUser('height', heightActive);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Goal(),));
+              },)
+          )
+        ,),
+    );
   }
 
 }

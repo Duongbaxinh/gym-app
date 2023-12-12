@@ -38,6 +38,8 @@ class _ScreenOptionState extends State<ScreenOption> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _indexSelected,
         onTap: (index) => setSelected(index),
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Theme.of(context).colorScheme.onSecondaryContainer,
         items:  <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: ImageIcon(NetworkImage(homeImage)),
@@ -52,7 +54,7 @@ class _ScreenOptionState extends State<ScreenOption> {
             label: 'Notification'
           ),
           const BottomNavigationBarItem(
-              icon: CircleAvatar(backgroundImage: NetworkImage('avatar')),
+              icon: CircleAvatar(backgroundImage: NetworkImage('https://res.cloudinary.com/dwu92ycra/image/upload/v1701570978/Gym-app/hinh-anh-avatar-Luffy_uovait.jpg')),
               label: 'Notification'
           ),
         ],

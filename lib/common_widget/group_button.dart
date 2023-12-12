@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
+import 'package:project_app/block/workout_plan_provider.dart';
+import 'package:provider/provider.dart';
 class GroupButtonCustom extends StatelessWidget{
   final void Function(String value) fn;
+  final String initSelected;
   final List<String> listButton;
   const GroupButtonCustom({
     super.key,
     required this.fn,
-    required this.listButton});
+    required this.listButton,
+    required this.initSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class GroupButtonCustom extends StatelessWidget{
           borderRadius: BorderRadius.circular(25)
         ),
         child: GroupButton(
-          controller: GroupButtonController(selectedIndex: 0),
+          controller: GroupButtonController(selectedIndex: listButton.indexOf(initSelected)),
           onSelected: (value, index, isSelected) => fn(value),
           buttons: listButton,
           options: GroupButtonOptions(

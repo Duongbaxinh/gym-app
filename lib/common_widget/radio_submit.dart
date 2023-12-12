@@ -25,6 +25,7 @@ class RadioSubmit extends StatelessWidget{
     TextStyle titleStyle = Theme.of(context).textTheme.headline6!;
     TextStyle subStyle = Theme.of(context).textTheme.subtitle2!;
     return Container(
+      padding: const EdgeInsets.only(right: 15),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         border: Border.all(color: isActive ? Colors.red : Colors.white)
@@ -38,7 +39,7 @@ class RadioSubmit extends StatelessWidget{
         ),
         title: Text(title,style: titleStyle,),
         subtitle: Text(sub,style: subStyle.copyWith(color: isActive ? Colors.red : Colors.white ),),
-        trailing: Text(price,style: titleStyle,),
+        trailing: Text('$price \$',style: titleStyle,),
       ),
     );
   }

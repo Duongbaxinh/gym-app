@@ -1,15 +1,18 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
+import 'package:project_app/common_widget/custom_chip.dart';
 
 class CardLesson extends StatelessWidget {
   final String titleLesson;
   final String subLesson;
   final String thumbnail;
+  final String state;
   const CardLesson({
     super.key,
     required this.titleLesson,
     required this.subLesson,
-    required this.thumbnail});
+    required this.thumbnail,
+    required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class CardLesson extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 327 / 160,
       child: Container(
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: NetworkImage(thumbnail),
@@ -37,6 +41,7 @@ class CardLesson extends StatelessWidget {
              '| $subLesson',
               style: subStyle!,
             ),
+            trailing:( state == 'private') ? ChipCustom(label: 'PRO',color: Colors.red,) : Text(''),
           ),
         ),
       ),

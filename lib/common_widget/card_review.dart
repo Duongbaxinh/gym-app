@@ -31,7 +31,9 @@ class CardReview extends StatelessWidget {
         children: [
           ListTile(
             leading: CircleAvatar(backgroundImage: NetworkImage(avatar),),
-            title: Row(children: [Text(name,style: nameStyle,),
+            title: Row(children: [SizedBox(
+                  width:110,
+                child: Text(name,style: nameStyle,overflow: TextOverflow.ellipsis,)),
               const SizedBox(width: 20,),
               Expanded(child: ChipCustom(label: evaluate.toString()))
             ],),

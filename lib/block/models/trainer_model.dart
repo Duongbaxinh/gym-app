@@ -4,14 +4,14 @@ import 'package:project_app/block/abstract/conver_data.dart';
 import 'package:project_app/block/models/client_model.dart';
 import 'package:project_app/block/models/user_model.dart';
 
-class TrainerModel extends UserModel implements ConvertData<TrainerModel>{
-  late String id;
-  late double experiences;
-  late int completed;
-  late int activeClients;
-  late double evaluate;
-  late String specializedIn;
-  TrainerModel(
+class TrainerModel extends UserModel{
+  late String? id;
+  late double? experiences;
+  late int? completed;
+  late int? activeClients;
+  late double? evaluate;
+  late String? specializeIn;
+  TrainerModel (
       super.name,
       super.age,
       super.email,
@@ -19,14 +19,13 @@ class TrainerModel extends UserModel implements ConvertData<TrainerModel>{
       super.avatar,
       super.background,
       this.id,
-      this.specializedIn,
+      this.specializeIn,
       this.experiences,
       this.completed,
       this.activeClients,
       this.evaluate
       );
   factory TrainerModel.fromJson(Map<String, dynamic> data) {
-    print('data ---------map $data');
     try{
       return TrainerModel(
           data['name'],
@@ -36,7 +35,7 @@ class TrainerModel extends UserModel implements ConvertData<TrainerModel>{
           data['avatar'],
           data['background'],
           data['id'],
-          data['specializedIn'],
+          data['specializeIn'],
           data['experiences'],
           data['completed'],
           data['activeClients'],
@@ -44,20 +43,7 @@ class TrainerModel extends UserModel implements ConvertData<TrainerModel>{
       );
     }
     catch (e){
-      print('err$e');
-      return  TrainerModel(
-          data['name'],
-          data['age'],
-          data['email'],
-          data['address'],
-          data['avatar'],
-          data['id'],
-          data['specializedIn'],
-          data['experiences'],
-          data['completed'],
-          data['activeClients'],
-          data['evaluate'],
-          data['background']);
+      throw Exception(e);
     }
 
   }
@@ -74,4 +60,8 @@ class TrainerModel extends UserModel implements ConvertData<TrainerModel>{
     throw UnimplementedError();
   }
 
+  @override
+  String toString() {
+    return 'TrainerModel{id: $id, experiences: $experiences, completed: $completed, activeClients: $activeClients, evaluate: $evaluate, specializeIn: $specializeIn}';
+  }
 }

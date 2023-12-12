@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class CategoryLesson extends StatelessWidget {
   final String titleCategory;
-  final String level;
+  final String typeLesson;
   final String time;
   const CategoryLesson(
       {super.key,
       required this.titleCategory,
-      required this.level,
+      required this.typeLesson,
       required this.time});
   @override
   Widget build(BuildContext context) {
@@ -37,19 +37,24 @@ class CategoryLesson extends StatelessWidget {
                 image: NetworkImage(thumbnail),
                 fit: BoxFit.cover,
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '$titleCategory\n$level'.toString(),
-                    style: titleStyle,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '$titleCategory\n$typeLesson'.toString(),
+                        style: titleStyle,
+                      ),
+                      Text(
+                        time,
+                        style: subStyle,
+                      ),
+                    ],
                   ),
-                  Text(
-                    time,
-                    style: subStyle,
-                  ),
-                ],
+                ),
               ),
               IconButton(
                   onPressed: () {}, icon: const Icon(Icons.arrow_drop_down))

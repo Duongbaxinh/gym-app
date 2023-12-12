@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 class CustomListTitle extends StatelessWidget{
   final String title;
   final String sub;
-  final void Function(dynamic) fn;
+  final EdgeInsets?  padding;
+  final void Function() fn;
 
   const CustomListTitle({super.key,
+    this.padding,
     required this.title,
     required this.sub,
     required this.fn});
@@ -17,9 +19,9 @@ class CustomListTitle extends StatelessWidget{
     TextStyle? titleStyle = Theme.of(context).textTheme.headline4;
     TextStyle subStyle = Theme.of(context).textTheme.subtitle1!.copyWith(color: yelSchema);
     return ListTile(
-      contentPadding: EdgeInsets.all(0),
+      contentPadding: padding ?? const EdgeInsets.all(0),
       leading: Text(title,style: titleStyle,),
-      trailing: Text(sub,style: subStyle,),
+      trailing: TextButton( onPressed: fn , child: Text(sub,style: subStyle,)),
     );
   }
 

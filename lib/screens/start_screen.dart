@@ -37,32 +37,34 @@ class _StartPageState extends State<StartPage>{
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-   return AspectRatio(
-      aspectRatio: w/h,
-     child: Column(
-       children: [
-               Expanded(
-                 flex: 5,
-                 child: CarouselSlider.builder(
-                     itemCount: dataStart.length,
-                     itemBuilder: (context, index, realIndex) => buildSlideImage(dataStart[index]),
-                     options: CarouselOptions(
-                       height: double.infinity,
-                       initialPage: 0,
-                       viewportFraction: 1,
-                       enableInfiniteScroll: false,
-                       onPageChanged: (index, reason) {
-                          setState(() {
-                            activeIndex = index;
-                          });
-                       },
-                     )),
-               ),
-               if(activeIndex == 2)  ButtonCustom(title: 'Start now', fn: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context) => const Gender(),));
-               }),
-         Expanded(child: AnimatedSmoothIndicator(activeIndex: activeIndex, count: dataStart.length))
-       ],
+   return Scaffold(
+     body: AspectRatio(
+        aspectRatio: w/h,
+       child: Column(
+         children: [
+                 Expanded(
+                   flex: 5,
+                   child: CarouselSlider.builder(
+                       itemCount: dataStart.length,
+                       itemBuilder: (context, index, realIndex) => buildSlideImage(dataStart[index]),
+                       options: CarouselOptions(
+                         height: double.infinity,
+                         initialPage: 0,
+                         viewportFraction: 1,
+                         enableInfiniteScroll: false,
+                         onPageChanged: (index, reason) {
+                            setState(() {
+                              activeIndex = index;
+                            });
+                         },
+                       )),
+                 ),
+                 if(activeIndex == 2)  ButtonCustom(title: 'Start now', fn: (){
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const Gender(),));
+                 }),
+           Expanded(child: AnimatedSmoothIndicator(activeIndex: activeIndex, count: dataStart.length))
+         ],
+       ),
      ),
    );
 

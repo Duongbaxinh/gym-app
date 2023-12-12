@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_app/common_widget/button_widget.dart';
 import 'package:project_app/common_widget/categories_lesson.dart';
+import 'package:project_app/common_widget/custome_icon_button.dart';
 import 'package:project_app/constant/image_icon.dart';
+import 'package:project_app/constant/index.dart';
 import 'package:project_app/util/show_take_appointment.dart';
 
 Map<String,dynamic> warmUp = {
@@ -57,12 +59,9 @@ class DetailScreen extends StatelessWidget{
               ),
               child: Align(
                   alignment: Alignment.topLeft,
-                  child: Container(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.black.withOpacity(0.2)
-                      ),
-                      child: IconButton(icon: const Icon(Icons.arrow_back),onPressed: (){}))),
+                  child:
+                CustomeIconButton(imageIcon: arrowLeft,fn:(){},),
+              ),
             ),
           ),
           Align(

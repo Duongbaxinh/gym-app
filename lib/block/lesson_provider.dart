@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:project_app/block/models/lesson_model.dart';
+import 'package:project_app/block/models/lesson.dart';
+import 'package:project_app/block/models/work_plan_model.dart';
 
 class LessonProvider with ChangeNotifier{
-   Future<void> listLesson(String level) async{
-     FirebaseFirestore firestore =  FirebaseFirestore.instance;
-      // List<LessonModel> lessons = [];
-      CollectionReference<Map<String,dynamic>> dataLesson =  firestore.collection('users');
-      QuerySnapshot lesson = await dataLesson.get();
-      for(var data in lesson.docs){
-        print('check data user all :::::: ${data.data()}');
-      }
-      // return lessons;
-   }
+  void listLesson(String value){
+    print(value);
+  }
+
+  Future<LessonModel> getLessonById(String id) async{
+    FirebaseFirestore fireStore = FirebaseFirestore.instance;
+    CollectionReference<Map<String,dynamic>> lessonRef = fireStore.collection('trainer');
+    DocumentSnapshot<Map<String,dynamic>> lessonSnapshot =  await lessonRef.doc(id).get();
+    return LessonModel.fromJson(lessonSnapshot.data()!);
+  }
+
 }

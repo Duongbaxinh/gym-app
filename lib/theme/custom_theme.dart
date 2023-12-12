@@ -62,7 +62,8 @@ class  ThemeDataClass {
      onSecondaryContainer: DeclareColor.lightGrey
    ),
   listTileTheme: ListTileThemeData(
-    dense: true,contentPadding: EdgeInsets.all(0)
+      dense: true,
+      contentPadding: EdgeInsets.all(0)
   ),
   sliderTheme: SliderThemeData(
     thumbShape: SliderComponentShape.noThumb

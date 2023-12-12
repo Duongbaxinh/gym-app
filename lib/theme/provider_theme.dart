@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_app/theme/custome_theme.dart';
+import 'package:project_app/theme/custom_theme.dart';
 
 class ManageThemeClass with ChangeNotifier{
  ThemeData _themeData = ThemeDataClass.darkTheme;

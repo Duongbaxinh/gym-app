@@ -8,21 +8,26 @@ class AppointmentDialog extends StatelessWidget {
   final String sub;
   final String thumbnail;
   final String titleButton;
+  final String? state;
   final bool icon;
   final VoidCallback fn;
-  AppointmentDialog(
+  const AppointmentDialog(
       {super.key,
       required this.title,
       required this.sub,
       required this.thumbnail,
       required this.fn,
         required this.titleButton,
-        this.icon = true});
+        this.icon = true,
+        this.state});
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: 322,
+        constraints: const BoxConstraints(
+          minHeight: 322,
+          maxHeight: 350
+        ),
         child: AlertDialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -30,6 +35,7 @@ class AppointmentDialog extends StatelessWidget {
           shadowColor: Colors.red,
           actions: [
             Center(child: ButtonCustom(title: titleButton, fn: fn,icon:icon)),
+            const SizedBox(height: 30,),
             Center(child: TextButton(onPressed: () {
               Navigator.pop(context,'Cancel');
             },
@@ -43,6 +49,7 @@ class AppointmentDialog extends StatelessWidget {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20)),
                 child: CardLesson(
+                  state: state ?? '',
                     titleLesson: title, subLesson: sub, thumbnail: thumbnail),
               ),
             ],

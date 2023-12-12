@@ -1,15 +1,11 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_app/block/models/client_model.dart';
-import 'package:project_app/common_widget/dialog_widget.dart';
-import 'package:project_app/screens/home_screen.dart';
+import 'package:project_app/screens/screen_option.dart';
 import 'package:project_app/util/show_diaglog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 class UserProvide with ChangeNotifier{
   late int _active = 0;
   get active => _active;
@@ -74,11 +70,16 @@ class UserProvide with ChangeNotifier{
       FirebaseAuth auth = FirebaseAuth.instance;
       FirebaseFirestore authStore = FirebaseFirestore.instance;
       UserCredential user = await auth.signInWithEmailAndPassword(email: email, password: password);
-      DocumentReference<Map<String,dynamic>> userSnapshot =   authStore.collection('users').doc(user.user!.uid);
+      DocumentReference<Map<String,dynamic>> userSnapshot =  authStore.collection('users').doc(user.user!.uid);
       DocumentSnapshot<Map<String,dynamic>> data = await userSnapshot.get();
-      await setData('userInfo', data.data()!);
+      print('chec---------------1k ${data.data()!}');
+      Map<String,dynamic> userFull = data.data()!;
+      userFull['id'] = user.user!.uid;
+      await setData('userInfo', userFull!);
+      Map<String,dynamic> ooo = await getUserInfo('userInfo');
+      print('checkkkkkkkkkkkk $ooo');
       // ignore: use_build_context_synchronously
-      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenOption(),));
     } on FirebaseAuthException catch(e){
         if(e.code == 'user-not-found'){
           // ignore: use_build_context_synchronously
