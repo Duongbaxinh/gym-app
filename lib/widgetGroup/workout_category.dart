@@ -18,7 +18,8 @@ class WorkOutCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     final workoutProvider = Provider.of<WorkOutPlanProvider>(context);
     final userProvider = Provider.of<UserProvide>(context);
-    return Consumer<WorkOutPlanProvider>(
+    return
+      Consumer<WorkOutPlanProvider>(
       builder: (BuildContext context, WorkOutPlanProvider workoutCategory,
               Widget? child)=>
           FutureBuilder<void>(future: workoutProvider.init(),
@@ -49,10 +50,8 @@ class WorkOutCategory extends StatelessWidget {
                               if(workPlanCategories[index].state == 'publish' || infoUser['premium']){
                                   // ignore: use_build_context_synchronously
                                   Navigator.push(context, MaterialPageRoute(builder: (context) => DetailLessonScreen(workPlanModel: workPlanCategories[index]),));
-                              }
-                              if(workPlanCategories[index].state != 'publish' || !infoUser['premium']){
-                                  // ignore: use_build_context_synchronously
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => SubmitScreen(),));
+                              }else{
+                                var push = Navigator.push(context, MaterialPageRoute(builder: (context) => const SubmitScreen(),));
                               }
                               },
                             child: ClipRRect(

@@ -4,6 +4,7 @@ import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/common_widget/customeFomFile.dart';
 import 'package:project_app/common_widget/footer_auth.dart';
 import 'package:project_app/common_widget/page_header.dart';
+import 'package:project_app/screens/screen_infor/gender_screen.dart';
 import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget{
@@ -17,6 +18,7 @@ class Register extends StatefulWidget{
 class _RegisterState extends State<Register>{
   final _formKey = GlobalKey<FormState>();
   TextEditingController _textEditingControllerEmail = TextEditingController();
+  TextEditingController _textEditingControllerNickName = TextEditingController();
   TextEditingController _textEditingControllerPassword = TextEditingController();
   TextEditingController _textEditingControllerAgainPassword = TextEditingController();
   String bg = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1700656153/Gym-app/bg_register_mjup81.png';
@@ -31,8 +33,9 @@ class _RegisterState extends State<Register>{
     if(value == null || value.isEmpty){
       return 'Please enter your $type';
     }
-    if(type == 'again')
-    return null;
+    if(type == 'again') {
+      return null;
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -55,7 +58,7 @@ class _RegisterState extends State<Register>{
                   image: bg),
             ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 25,horizontal: 15),
+                padding: const EdgeInsets.symmetric(vertical: 25,horizontal: 15),
                 child: Form(
                     key: _formKey,
                     child:  Column(
@@ -63,6 +66,9 @@ class _RegisterState extends State<Register>{
                         CustomeTextFile(lableText: 'Email',
                           textEditingController: _textEditingControllerEmail,
                           type: 'email',),
+                        CustomeTextFile(lableText: 'NickName',
+                          textEditingController: _textEditingControllerNickName,
+                          type: 'nickname',),
                         CustomeTextFile(lableText: 'Password',
                           textEditingController: _textEditingControllerPassword,
                           show: show,
@@ -87,13 +93,11 @@ class _RegisterState extends State<Register>{
                     fn3: (){
                      bool check =  _formKey.currentState!.validate();
                       if(check){
-                          userProvider.register(
-                          _textEditingControllerEmail.text,
-                          _textEditingControllerPassword.text,
-                          context);
-                          }
-                      }
-                    ,
+                        userProvider.setInfoUser('email', _textEditingControllerEmail.text);
+                        userProvider.setInfoUser('password',_textEditingControllerPassword.text);
+                        userProvider.setInfoUser('nickname',_textEditingControllerNickName.text);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Gender(),));
+                      }},
                     titleButton: 'Register'),
               )
             ],

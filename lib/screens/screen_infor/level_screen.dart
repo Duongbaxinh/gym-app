@@ -4,6 +4,7 @@ import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/common_widget/button_widget.dart';
 import 'package:project_app/common_widget/screen_start.dart';
 import 'package:project_app/common_widget/wheel_custome.dart';
+import 'package:project_app/screens/home_screen.dart';
 import 'package:project_app/screens/screen_auth/auth_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -46,10 +47,11 @@ class _LevelState extends State<Level>{
             bottom:  Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back)),
+                IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back)),
                 ButtonCustom(title: 'Next', fn: (){
                   userProvider.setInfoUser('level', level[levelActive]);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AuthScreen(),));
+                  userProvider.register(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthScreen(),));
                 }
                 )
               ],),),

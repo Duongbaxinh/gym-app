@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:project_app/common_widget/button_widget.dart';
 import 'package:project_app/constant/list_data_start.dart';
-import 'package:project_app/screens/screen_infor/age_screen.dart';
+import 'package:project_app/screens/screen_auth/auth_screen.dart';
 import 'package:project_app/screens/screen_infor/gender_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class StartPage extends StatefulWidget{
@@ -60,7 +59,7 @@ class _StartPageState extends State<StartPage>{
                        )),
                  ),
                  if(activeIndex == 2)  ButtonCustom(title: 'Start now', fn: (){
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => const Gender(),));
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const AuthScreen(),));
                  }),
            Expanded(child: AnimatedSmoothIndicator(activeIndex: activeIndex, count: dataStart.length))
          ],

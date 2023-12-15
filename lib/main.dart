@@ -10,6 +10,8 @@ import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/block/workout_plan_provider.dart';
 import 'package:project_app/screens/screen_auth/auth_screen.dart';
 import 'package:project_app/screens/screen_option.dart';
+import 'package:project_app/screens/start_screen.dart';
+import 'package:project_app/screens/video_screen.dart';
 import 'package:project_app/theme/custom_theme.dart';
 import 'package:provider/provider.dart';
 
@@ -67,15 +69,13 @@ class MyApp extends StatelessWidget {
       home:  Scaffold(
           backgroundColor: Color.fromARGB(255, 28, 28, 30),
           body:
-          // VideoScreen(),
-
           FutureBuilder(
             future: userInfo(),
               builder: (context, snapshot){
               if(snapshot.hasData){
                 return const ScreenOption();
               }else{
-                return const AuthScreen();
+                return const StartPage();
               }              }
               )
           ),

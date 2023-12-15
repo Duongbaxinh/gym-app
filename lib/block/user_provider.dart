@@ -32,25 +32,19 @@ class UserProvide with ChangeNotifier{
 
   // USER AUTHENTICATION
   Map<String,dynamic> infoUser = {
-    "age":18,
-    "gender":"name",
-    "level":'medium',
-    "weight":65,
-    "height":175,
-    "goal":"gain weight",
   };
   setInfoUser( String type, dynamic value){
     infoUser[type] = value;
   }
 
   // ignore: non_constant_identifier_names
-  Future<void> register(String email , String password,BuildContext context) async{
+  Future<void> register(BuildContext context) async{
     try{
       FirebaseAuth auth  = FirebaseAuth.instance;
       FirebaseFirestore fireBase = FirebaseFirestore.instance;
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: infoUser['email'], password: infoUser['password']);
       // await userCredential.user!.updateDisplayName(username);
-      infoUser['email'] = email;
+      infoUser['premium'] = false;
       await fireBase.collection("users").doc(userCredential.user!.uid).set(infoUser);
       // ignore: use_build_context_synchronously
       return ShowDialog('Success', 'register successfully', context);

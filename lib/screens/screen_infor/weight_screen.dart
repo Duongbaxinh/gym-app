@@ -22,7 +22,7 @@ class _WeightState extends State<Weight>{
       weightActive = value ;
     });
   }
-  String we =  '⎯'*160;
+  String we =  '${'⎯⎯⎯⎯⎯'}'*160;
   @override
   Widget build(BuildContext context) {
    return Scaffold(

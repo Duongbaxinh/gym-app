@@ -25,21 +25,24 @@ class RadioSubmit extends StatelessWidget{
     TextStyle titleStyle = Theme.of(context).textTheme.headline6!;
     TextStyle subStyle = Theme.of(context).textTheme.subtitle2!;
     return Container(
-      padding: const EdgeInsets.only(right: 15),
+      height: 80,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         border: Border.all(color: isActive ? Colors.red : Colors.white)
       ),
-      child: ListTile(
-        leading: Radio<SingingCharacter>(
-          value: value!,
-          groupValue: character,
-          activeColor: Colors.red,
-          onChanged: (SingingCharacter? value) => fn(value!),
+      child: Center(
+        child: ListTile(
+          leading: Radio<SingingCharacter>(
+            value: value!,
+            groupValue: character,
+            activeColor: Colors.red,
+            onChanged: (SingingCharacter? value) => fn(value!),
+          ),
+          title: Text(title,style: titleStyle,),
+          subtitle: Text(sub,style: subStyle.copyWith(color: isActive ? Colors.red : Colors.white ),),
+          trailing: Text('$price \$',style: titleStyle,),
         ),
-        title: Text(title,style: titleStyle,),
-        subtitle: Text(sub,style: subStyle.copyWith(color: isActive ? Colors.red : Colors.white ),),
-        trailing: Text('$price \$',style: titleStyle,),
       ),
     );
   }

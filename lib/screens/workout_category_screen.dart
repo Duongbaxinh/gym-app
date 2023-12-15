@@ -4,7 +4,6 @@ import 'package:project_app/widgetGroup/workout_category.dart';
 
 class WorkoutCategoriesScreen extends StatelessWidget{
   const WorkoutCategoriesScreen({super.key});
-
   @override
   Widget build(BuildContext context){
     TextStyle header = Theme.of(context).textTheme.headline2!;

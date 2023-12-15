@@ -19,6 +19,7 @@ import 'package:project_app/screens/detail_lesson_screen.dart';
 import 'package:project_app/screens/detail_trainer_screen.dart';
 import 'package:project_app/screens/fitness_trainers_screen.dart';
 import 'package:project_app/screens/workout_category_screen.dart';
+import 'package:project_app/util/formatDate.dart';
 import 'package:project_app/widgetGroup/workout_category.dart';
 import 'package:provider/provider.dart';
 
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                           ListTile(
                             contentPadding: const EdgeInsets.all(0),
                             title: Text(
-                              'Hello ${userInfo['email']}'.toUpperCase(),
+                              'Hello ${userInfo['nickname']}'.toUpperCase(),
                               style: titleStyle,
                             ),
                             subtitle: Text(
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               CustomListTitle(
                                   title: 'Today work plan',
-                                  sub: 'Mon 26 Apr',
+                                  sub: Util().formatTime(DateTime.now()),
                                   fn: () {}),
                               InkWell(
                                 onTap: () {

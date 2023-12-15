@@ -5,6 +5,7 @@ import 'package:project_app/common_widget/bottom_button.dart';
 import 'package:project_app/common_widget/categories_lesson.dart';
 import 'package:project_app/common_widget/form_detail.dart';
 import 'package:project_app/constant/image_icon.dart';
+import 'package:project_app/screens/video_screen.dart';
 import 'package:project_app/util/show_take_appointment.dart';
 
 Map<String,dynamic> warmUp = {
@@ -35,7 +36,6 @@ class DetailLessonScreen extends StatelessWidget{
   const DetailLessonScreen({super.key, required this.workPlanModel});
   @override
   Widget build(BuildContext context){
-    List<Map<String,dynamic>> lessons = warmUp['lessons'];
     Color yelSchema = Theme.of(context).colorScheme.onSecondary;
     TextStyle? titleStyle = Theme.of(context).textTheme.headline4;
     TextStyle subStyle = Theme.of(context).textTheme.subtitle1!.copyWith(color: yelSchema);
@@ -44,51 +44,56 @@ class DetailLessonScreen extends StatelessWidget{
             background: workPlanModel.background,
             aspect: 375/459,
             height: 459,
-            body:      SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  ListTile(
-                    contentPadding: const EdgeInsets.all(0),
-                    visualDensity: const VisualDensity(horizontal: 0,vertical: 4),
-                    title: Text(workPlanModel.namePlan.trim(),style: titleStyle,),
-                    subtitle: Text(workPlanModel.describe,style: subStyle,),),
-                  Row(children: [
-                    Chip(avatar: ImageIcon(NetworkImage(timeIcon)) , label: Text('${workPlanModel.totalTime} min')),
-                    const SizedBox(width: 50,),
-                    Chip(avatar: ImageIcon(NetworkImage(calIcon)), label: Text('${workPlanModel.totalCalo} cal')),
-                  ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Text(workPlanModel.description,maxLines: 6,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.justify,),
-                  ),
-                  ListView.separated(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => CategoryLesson(
-                          titleCategory: workPlanModel.lessons![index].nameLesson!,
-                          typeLesson: workPlanModel.lessons![index].typeLesson!,
-                          time: workPlanModel.lessons![index].timeLesson!),
-                      separatorBuilder: (context, index) => SizedBox(height: 10,),
-                      itemCount: workPlanModel.lessons!.length )
+            body: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ListTile(
+                  contentPadding: const EdgeInsets.all(0),
+                  visualDensity: const VisualDensity(horizontal: 0,vertical: 4),
+                  title: Text(workPlanModel.namePlan.trim(),style: titleStyle,),
+                  subtitle: Text(workPlanModel.describe,style: subStyle,),),
+                Row(children: [
+                  Chip(avatar: ImageIcon(NetworkImage(timeIcon)) , label: Text('${workPlanModel.totalTime} min')),
+                  const SizedBox(width: 50,),
+                  Chip(avatar: ImageIcon(NetworkImage(calIcon)), label: Text('${workPlanModel.totalCalo} cal')),
                 ],
-              ),
+                ),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  margin: const EdgeInsets.only(bottom: 60),
+                  child: Text(workPlanModel.description,maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.justify,),
+                ),
+                Expanded(
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                            VideoScreen(lesson: workPlanModel.lessons![index], lessons:workPlanModel.lessons ?? [] ,),));},
+                        child: CategoryLesson(
+                            titleCategory: workPlanModel.lessons![index].nameLesson!,
+                            typeLesson: workPlanModel.lessons![index].typeLesson!,
+                            time: workPlanModel.lessons![index].timeLesson!),
+                      ),
+                      separatorBuilder: (context, index) => const SizedBox(height: 10,),
+                      itemCount: workPlanModel.lessons!.length ),
+                )
+              ],
             )  ,
-            footer:
-            BottomButton(
-              title: 'Start Workout',
-              fn: (){
-                ShowAppointment(warmUp['background'],
-                    warmUp['name'],
-                    warmUp['describe'], () { }, context);
-              },
-            )
-
-        )
+        ),
+      bottomNavigationBar:SizedBox(
+        height: 100,
+        child: BottomButton(
+          title: 'Start Workout',
+          fn: (){
+            ShowAppointment(warmUp['background'],
+                warmUp['name'],
+                warmUp['describe'], () { }, context);
+          },
+        ),
+      ),
     );
   }
 }
