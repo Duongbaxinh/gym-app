@@ -20,7 +20,6 @@ class WheelCustom extends StatelessWidget{
   Map<String ,dynamic> listBody = {
     "goal":['Lose weight','Gain more flexible','Gain Weight','Learn the basic','Get fitter'],
     "level":['Beginner','Advance','Rookie','True Beast','Intermediate'],
-    "weight" : '|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||'
   };
 
   List<Widget> buildItem(BuildContext context){

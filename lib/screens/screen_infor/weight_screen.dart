@@ -16,13 +16,13 @@ class Weight extends StatefulWidget{
   }
 }
 class _WeightState extends State<Weight>{
-  int weightActive = 40;
+  int weightActive = 0;
   void setWeightActive(value){
     setState(() {
       weightActive = value ;
     });
   }
-  String we =  '${'⎯⎯⎯⎯⎯'}'*160;
+  String we =  '${'----'}'*160;
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -40,8 +40,8 @@ class _WeightState extends State<Weight>{
                height: 500,
                width: 100,
                child: WheelCustom(
-                 widthItem: 80,
-                 type: we.split(''),
+                 widthItem: 0,
+                 type: we.split(""),
                  start: 0,
                  end:80,
                  active: weightActive,

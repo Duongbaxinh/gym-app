@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/common_widget/customeFomFile.dart';
@@ -7,7 +7,7 @@ import 'package:project_app/common_widget/page_header.dart';
 import 'package:project_app/screens/screen_infor/gender_screen.dart';
 import 'package:provider/provider.dart';
 
-class Register extends StatefulWidget{
+class Register extends StatefulWidget {
   const Register({super.key});
 
   @override
@@ -15,71 +15,85 @@ class Register extends StatefulWidget{
     return _RegisterState();
   }
 }
-class _RegisterState extends State<Register>{
+
+class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController _textEditingControllerEmail = TextEditingController();
-  TextEditingController _textEditingControllerNickName = TextEditingController();
-  TextEditingController _textEditingControllerPassword = TextEditingController();
-  TextEditingController _textEditingControllerAgainPassword = TextEditingController();
-  String bg = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1700656153/Gym-app/bg_register_mjup81.png';
+  TextEditingController _textEditingControllerNickName =
+      TextEditingController();
+  TextEditingController _textEditingControllerPassword =
+      TextEditingController();
+  TextEditingController _textEditingControllerAgainPassword =
+      TextEditingController();
+  String bg =
+      'https://res.cloudinary.com/dwu92ycra/image/upload/v1700656153/Gym-app/bg_register_mjup81.png';
   bool show = false;
-  void setShow(){
+  void setShow() {
     setState(() {
       show = !show;
       print('run at here $show');
     });
   }
-  String? validate(String value,String type){
-    if(value == null || value.isEmpty){
+
+  String? validate(String value, String type) {
+    if (value == null || value.isEmpty) {
       return 'Please enter your $type';
     }
-    if(type == 'again') {
+    if (type == 'again') {
       return null;
     }
   }
+
   @override
   Widget build(BuildContext context) {
     Color yel = Theme.of(context).colorScheme.onSecondary;
     TextStyle? h4 = Theme.of(context).textTheme.headline4;
-    TextStyle? sub = Theme.of(context).textTheme.headline4!.copyWith(color: yel);
-    return  Scaffold(
-      body:
-       Consumer<UserProvide>(
-         builder: (context, userProvider, child) =>
-          SingleChildScrollView(
+    TextStyle? sub =
+        Theme.of(context).textTheme.headline4!.copyWith(color: yel);
+    return Scaffold(
+      body: Consumer<UserProvide>(
+        builder: (context, userProvider, child) => SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:
-            [ AspectRatio(
-              aspectRatio: 375/350,
-              child: PageHeader(
-                  title: 'Hello rookies',
-                  // sub: 'Enter your informations below or login with a other account',
-                  image: bg),
-            ),
+            children: [
+              AspectRatio(
+                aspectRatio: 375 / 350,
+                child: PageHeader(
+                    title: 'Hello rookies',
+                    // sub: 'Enter your informations below or login with a other account',
+                    image: bg),
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25,horizontal: 15),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 25, horizontal: 15),
                 child: Form(
                     key: _formKey,
-                    child:  Column(
+                    child: Column(
                       children: [
-                        CustomeTextFile(lableText: 'Email',
+                        CustomTextFile(
+                          lableText: 'Email',
                           textEditingController: _textEditingControllerEmail,
-                          type: 'email',),
-                        CustomeTextFile(lableText: 'NickName',
+                          type: 'email',
+                        ),
+                        CustomTextFile(
+                          lableText: 'NickName',
                           textEditingController: _textEditingControllerNickName,
-                          type: 'nickname',),
-                        CustomeTextFile(lableText: 'Password',
+                          type: 'nickname',
+                        ),
+                        CustomTextFile(
+                          lableText: 'Password',
                           textEditingController: _textEditingControllerPassword,
                           show: show,
-                          fn: ()=>setShow(),
+                          fn: () => setShow(),
                           type: 'password',
                         ),
-                        CustomeTextFile(lableText: 'Again password',
+                        CustomTextFile(
+                          lableText: 'Again password',
                           compare: _textEditingControllerPassword.text,
-                          textEditingController: _textEditingControllerAgainPassword,
+                          textEditingController:
+                              _textEditingControllerAgainPassword,
                           show: show,
-                          fn: ()=>setShow(),
+                          fn: () => setShow(),
                           type: 'again_password',
                         ),
                       ],
@@ -88,23 +102,30 @@ class _RegisterState extends State<Register>{
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: FooterAuth(
-                    fn1: (){},
-                    fn2: (){},
-                    fn3: (){
-                     bool check =  _formKey.currentState!.validate();
-                      if(check){
-                        userProvider.setInfoUser('email', _textEditingControllerEmail.text);
-                        userProvider.setInfoUser('password',_textEditingControllerPassword.text);
-                        userProvider.setInfoUser('nickname',_textEditingControllerNickName.text);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Gender(),));
-                      }},
+                    fn1: () {},
+                    fn2: () {},
+                    fn3: () {
+                      bool check = _formKey.currentState!.validate();
+                      if (check) {
+                        userProvider.setInfoUser(
+                            'email', _textEditingControllerEmail.text);
+                        userProvider.setInfoUser(
+                            'password', _textEditingControllerPassword.text);
+                        userProvider.setInfoUser(
+                            'nickname', _textEditingControllerNickName.text);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Gender(),
+                            ));
+                      }
+                    },
                     titleButton: 'Register'),
               )
             ],
           ),
+        ),
       ),
-       ) ,
     );
   }
-
 }

@@ -1,45 +1,51 @@
 import 'package:project_app/block/models/lesson.dart';
-import 'package:project_app/block/models/trainer_model.dart';
 
 class WorkPlanModel {
-  late String? id;
-  late String namePlan;
-  late String thumbnail;
-  late String background;
-  late String describe;
-  late String description;
-  late String category;
-  late double totalTime;
-  late String timeDetail;
-  late double totalCalo;
-  late String state;
-  late List<LessonModel>? lessons;
-  late TrainerModel ? trainer;
   WorkPlanModel();
-  factory WorkPlanModel.fromJson(Map<String , dynamic> lesson){
-  try{
-    WorkPlanModel workPlanModel = WorkPlanModel();
-    workPlanModel.id = lesson['id'];
-    workPlanModel.namePlan = lesson['namePlan'];
-    workPlanModel.thumbnail = lesson['thumbnail'];
-    workPlanModel.background = lesson['background'];
-    workPlanModel.describe = lesson['describe'];
-    workPlanModel.description = lesson['description'];
-    workPlanModel.category = lesson['category'];
-    workPlanModel.totalTime =  lesson['totalTime'];
-    workPlanModel.timeDetail = lesson['timeDetail'];
-    workPlanModel.totalCalo =  lesson['totalCalo'];
-    workPlanModel.state = lesson['state'];
-    workPlanModel.lessons =  lesson['lessons'];
-    workPlanModel.trainer =  lesson['trainer'];
-    return workPlanModel;
-  }catch (err){
-    throw Exception(err);
+  late final String thumbnail;
+  late final String timeDetail;
+  late final int totalTime;
+  late final String background;
+  late final String namePlan;
+  late final String description;
+  late final int totalCalo;
+  late final String state;
+  late final String describe;
+  late final String category;
+  late List<LessonModel> lessons;
+
+  WorkPlanModel.fromJson(Map<String, dynamic> json) {
+    thumbnail = json['thumbnail'];
+    timeDetail = json['timeDetail'];
+    totalTime = json['totalTime'];
+    background = json['background'];
+    namePlan = json['namePlan'];
+    description = json['description'];
+    totalCalo = json['totalCalo'];
+    state = json['state'];
+    describe = json['describe'];
+    category = json['category'];
+    lessons = json['lessons'] ?? [];
   }
+
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['thumbnail'] = thumbnail;
+    _data['timeDetail'] = timeDetail;
+    _data['totalTime'] = totalTime;
+    _data['background'] = background;
+    _data['namePlan'] = namePlan;
+    _data['description'] = description;
+    _data['totalCalo'] = totalCalo;
+    _data['state'] = state;
+    _data['describe'] = describe;
+    _data['category'] = category;
+    _data['lessons'] = lessons ?? [];
+    return _data;
   }
 
   @override
   String toString() {
-    return 'WorkPlanModel{id: $id, namePlan: $namePlan, thumbnail: $thumbnail, category: $category, totalTime: $totalTime, timeDetail: $timeDetail, totalCalo: $totalCalo, state: $state, lessons: $lessons, trainer: $trainer}';
+    return 'WorkPlanModel{thumbnail: $thumbnail, timeDetail: $timeDetail, totalTime: $totalTime, background: $background, namePlan: $namePlan, description: $description, totalCalo: $totalCalo, state: $state, describe: $describe, category: $category, lessons: $lessons}';
   }
 }

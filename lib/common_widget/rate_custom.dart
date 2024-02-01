@@ -49,13 +49,14 @@ class RateCustom extends StatelessWidget {
 
     return Column(
       children: [
-       if(toplables) Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 22,vertical: 5),
-          child:  Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: topTitle(titles),
+        if (toplables)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: topTitle(titles),
+            ),
           ),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -72,10 +73,11 @@ class RateCustom extends StatelessWidget {
                 data: SliderTheme.of(context).copyWith(
                     trackHeight: size,
                     valueIndicatorColor: Colors.white,
-                    tickMarkShape:const RoundSliderTickMarkShape(tickMarkRadius: 0),
+                    tickMarkShape:
+                        const RoundSliderTickMarkShape(tickMarkRadius: 0),
                     thumbShape: thumShape
                         ? RoundSliderThumbShape(
-                            enabledThumbRadius: size / 1.9, elevation: 0)
+                            enabledThumbRadius: size / 1.8, elevation: 0)
                         : SliderComponentShape.noThumb,
                     overlayShape: SliderComponentShape.noOverlay),
                 child: Slider(

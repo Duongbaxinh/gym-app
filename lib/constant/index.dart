@@ -11,6 +11,7 @@ String PLAY_ICON  = 'https://res.cloudinary.com/dwu92ycra/image/upload/v17023939
 String VOLUM_UP = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1702394358/Gym-app/Volume_Up_ekbsat.png';
 String VOLUM_DOWN = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1702394336/Gym-app/Mute_aslh8b.png';
 String REPEAT_ICON = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1702394335/Gym-app/Repeat_nv87ld.png';
-
+String SHOW_ICON = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1702862682/Gym-app/Show_esekj1.png';
+String HIDDEN_ICON = 'https://res.cloudinary.com/dwu92ycra/image/upload/v1702862683/Gym-app/Hide_kq6lyf.png';
 //Mess
 String MESS_BOOK = 'You’ve book a new appointment\n with your trainer.';

@@ -24,6 +24,7 @@ class CardNewWorkout extends StatelessWidget{
         children: [
           SizedBox(
             width: 200,
+              height: 250,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                   child: Image(image: NetworkImage(thumbnail),fit: BoxFit.cover,))),

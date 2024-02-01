@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:project_app/common_widget/custom_icon_button.dart';
 import 'package:project_app/common_widget/trainer_card.dart';
 import 'package:project_app/constant/index.dart';
 import 'package:project_app/constant/list_data_start.dart';
@@ -19,10 +19,12 @@ class FitnessTrainerScreen extends StatelessWidget {
           'fitness trainers'.toUpperCase(),
           style: titleStyle,
         ),
-        leading: IconButton(
-          color: Colors.white,
-          onPressed: () {},
-          icon: ImageIcon(NetworkImage(arrowLeft)),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: IconButtonCustom(
+            fn: () => Navigator.pop(context),
+            imageIcon: arrowLeft,
+          ),
         ),
         centerTitle: true,
         elevation: 0,
@@ -34,13 +36,19 @@ class FitnessTrainerScreen extends StatelessWidget {
               return ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: TrainerCard(
-                  trainerName: trainers[index].name,
+                  trainerName: trainers[index].name!,
                   specializeIn: trainers[index].specializeIn!,
                   experience: trainers[index].experiences!.toString(),
-                  evaluate: trainers[index].evaluate!.toString(),
-                  avatar: trainers[index].avatar,
+                  evaluate: trainers[index].evaluate!.toStringAsFixed(1),
+                  avatar: trainers[index].avatar!,
                   fn: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DetailTrainerScreen(trainer: trainers[index],),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailTrainerScreen(
+                            trainer: trainers[index],
+                          ),
+                        ));
                   },
                 ),
               );

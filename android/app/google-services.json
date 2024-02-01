@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:578863321924:android:55d849f74aba24d4587d11",
+        "mobilesdk_app_id": "1:578863321924:android:4304c62c26583351587d11",
         "android_client_info": {
-          "package_name": "com.example.project_app"
+          "package_name": "com.example.gym_project"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "578863321924-bq3b11n62qur78g3o6eade8tnuhmvenk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDdLVRfjmPZBzc0GgKI5Fs3MVx2nNjhHFs"
@@ -20,7 +25,41 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578863321924-bq3b11n62qur78g3o6eade8tnuhmvenk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578863321924:android:55d849f74aba24d4587d11",
+        "android_client_info": {
+          "package_name": "com.example.project_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578863321924-bq3b11n62qur78g3o6eade8tnuhmvenk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdLVRfjmPZBzc0GgKI5Fs3MVx2nNjhHFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578863321924-bq3b11n62qur78g3o6eade8tnuhmvenk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

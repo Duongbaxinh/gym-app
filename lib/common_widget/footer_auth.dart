@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_app/common_widget/button_widget.dart';
-import 'package:project_app/common_widget/custome_icon_button.dart';
+import 'package:project_app/common_widget/custom_icon_button.dart';
 
 class FooterAuth extends StatelessWidget{
   final VoidCallback fn1;
@@ -21,9 +21,9 @@ class FooterAuth extends StatelessWidget{
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         CustomeIconButton(imageIcon: iconApple, fn: (){}),
+         IconButtonCustom(imageIcon: iconApple, fn: (){}),
           const SizedBox(width: 40,),
-          CustomeIconButton(imageIcon: iconGoogle, fn: (){}),
+          IconButtonCustom(imageIcon: iconGoogle, fn: (){}),
         ],
       ),
         ButtonCustom(title: titleButton, fn: fn3)

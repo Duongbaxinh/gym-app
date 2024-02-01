@@ -1,28 +1,33 @@
 class LessonModel {
-  late String? nameLesson;
-  late String? thumbnail;
-  late String? typeLesson;
-  late String? timeLesson;
-  late String? video;
-  LessonModel();
-  Map<String,dynamic> toMap(LessonModel lesson){
-    return {
-      "nameLesson":lesson.nameLesson,
-      "thumbnail":lesson.thumbnail,
-      "typeLesson":lesson.typeLesson,
-      "timeLesson":lesson.timeLesson,
-      "video":lesson.video
-    };
+  LessonModel({
+    required this.nameLesson,
+    required this.thumbnail,
+    required this.typeLesson,
+    required this.timeLesson,
+    required this.video,
+  });
+  late final String nameLesson;
+  late final String thumbnail;
+  late final String typeLesson;
+  late final String timeLesson;
+  late final String video;
+
+  LessonModel.fromJson(Map<String, dynamic> json) {
+    nameLesson = json['nameLesson'];
+    thumbnail = json['thumbnail'];
+    typeLesson = json['typeLesson'];
+    timeLesson = json['timeLesson'];
+    video = json['video'];
   }
 
-  factory LessonModel.fromJson(Map<String , dynamic> lesson){
-     LessonModel lessonModel = LessonModel();
-     lessonModel.nameLesson =  lesson['nameLesson'];
-     lessonModel.thumbnail =  lesson['thumbnail'];
-     lessonModel.typeLesson =  lesson['typeLesson'];
-     lessonModel.timeLesson =  lesson['timeLesson'];
-     lessonModel.video =  lesson['video'];
-     return lessonModel;
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['nameLesson'] = nameLesson;
+    _data['thumbnail'] = thumbnail;
+    _data['typeLesson'] = typeLesson;
+    _data['timeLesson'] = timeLesson;
+    _data['video'] = video;
+    return _data;
   }
 
   @override

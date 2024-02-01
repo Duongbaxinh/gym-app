@@ -7,12 +7,14 @@ class CardReview extends StatelessWidget {
   final String name;
   final String evaluate;
   final String comment;
+  final String date;
   const CardReview(
       {super.key,
       required this.avatar,
       required this.name,
       required this.evaluate,
-      required this.comment});
+      required this.comment,
+      required this.date});
   @override
   Widget build(BuildContext context) {
     Color yelSchema = Theme.of(context).colorScheme.onSecondary;
@@ -20,30 +22,44 @@ class CardReview extends StatelessWidget {
     TextStyle nameStyle = Theme.of(context).textTheme.headline3!;
     TextStyle subStyle = Theme.of(context).textTheme.subtitle1!;
     return Container(
-      width: 300,
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-        color: greySchema,
-      ),
-      child:
-      Column(
-        children: [
-          ListTile(
-            leading: CircleAvatar(backgroundImage: NetworkImage(avatar),),
-            title: Row(children: [SizedBox(
-                  width:110,
-                child: Text(name,style: nameStyle,overflow: TextOverflow.ellipsis,)),
-              const SizedBox(width: 20,),
-              Expanded(child: ChipCustom(label: evaluate.toString()))
-            ],),
-            trailing: const Text('2d ago'),
-          ),
-          Container(
-              padding: EdgeInsets.only(top: 10),
-              child: Text(comment,style: subStyle.copyWith(fontWeight: FontWeight.normal),maxLines:4,overflow: TextOverflow.ellipsis,))
-        ],
-      )
-    );
+        width: 300,
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(15)),
+          color: greySchema,
+        ),
+        child: Column(
+          children: [
+            ListTile(
+              leading: CircleAvatar(
+                backgroundImage: NetworkImage(avatar),
+              ),
+              title: Row(
+                children: [
+                  SizedBox(
+                      width: 130,
+                      child: Text(
+                        name,
+                        style: nameStyle,
+                        overflow: TextOverflow.ellipsis,
+                      )),
+                  Expanded(child: ChipCustom(label: evaluate.toString()))
+                ],
+              ),
+              trailing: Text(
+                date,
+                style: subStyle,
+              ),
+            ),
+            Container(
+                padding: const EdgeInsets.only(top: 10),
+                child: Text(
+                  comment,
+                  style: subStyle.copyWith(fontWeight: FontWeight.normal),
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                ))
+          ],
+        ));
   }
 }

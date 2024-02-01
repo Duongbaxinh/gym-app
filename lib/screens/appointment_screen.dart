@@ -4,7 +4,7 @@ import 'package:project_app/block/models/schedule_model.dart';
 import 'package:project_app/block/schedule_provider.dart';
 import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/common_widget/button_widget.dart';
-import 'package:project_app/common_widget/custome_icon_button.dart';
+import 'package:project_app/common_widget/custom_icon_button.dart';
 import 'package:project_app/common_widget/ouline_button_custom.dart';
 import 'package:project_app/common_widget/trainer_card.dart';
 import 'package:project_app/constant/index.dart';
@@ -62,18 +62,17 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         future: scheduleProvider.getScheduleForTrainer(widget.idTrainer),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print('check snapShot data ${snapshot.data}');
             ScheduleModel schedule = snapshot.data!;
             return Scaffold(
               appBar: AppBar(
                 title: Text(
-                  initDate.toString().toUpperCase(),
+                  'Appointment'.toUpperCase(),
                   style: titleStyle,
                 ),
                 centerTitle: true,
                 leading: Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: CustomeIconButton(
+                  child: IconButtonCustom(
                     imageIcon: arrowLeft,
                     fn: () {
                       Navigator.pop(context);
@@ -192,7 +191,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }

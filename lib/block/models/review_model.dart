@@ -1,24 +1,37 @@
 class ReviewModel {
-  late String? name;
-  late String? avatar;
-  late double? evaluate;
-  late String? comment;
-  late String? idTrainer;
-  late DateTime? createAt;
-  ReviewModel();
+  ReviewModel({
+    required this.name,
+    required this.idTrainer,
+    required this.comment,
+    required this.avatar,
+    required this.createAt,
+    required this.evaluate,
+  });
+  String? name;
+  String? idTrainer;
+  String? comment;
+  String? avatar;
+  String? createAt;
+  double? evaluate;
 
-  factory ReviewModel.fromJson(Map<String , dynamic> lesson){
-    ReviewModel lessonModel = ReviewModel();
-    lessonModel.name =  lesson['name'];
-    lessonModel.avatar =  lesson['avatar'];
-    lessonModel.evaluate =  lesson['evaluate'];
-    lessonModel.comment =  lesson['comment'];
-    lessonModel.createAt =  lesson['createAt'];
-    return lessonModel;
+  ReviewModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    idTrainer = json['idTrainer'];
+    comment = json['comment'];
+    avatar = json['avatar'] ??
+        'https://res.cloudinary.com/dwu92ycra/image/upload/v1701049337/Gym-app/63_wgsqkq.png';
+    createAt = json['create_At'];
+    evaluate = json['evaluate'];
   }
 
-  @override
-  String toString() {
-    return 'ReviewModel{name: $name, avatar: $avatar, evaluate: $evaluate, comment: $comment, createAt: $createAt}';
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['name'] = name;
+    _data['idTrainer'] = idTrainer;
+    _data['comment'] = comment;
+    _data['avatar'] = avatar;
+    _data['create_At'] = createAt;
+    _data['evaluate'] = evaluate;
+    return _data;
   }
 }

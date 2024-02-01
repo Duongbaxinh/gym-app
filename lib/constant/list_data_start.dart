@@ -3,19 +3,19 @@ List<Map<String, dynamic>> dataStart = [
     "title1": "Meet your coach,",
     "title2": " start your journey",
     "image":
-        "https://res.cloudinary.com/dwu92ycra/image/upload/v1700204589/Gym-app/bg_start_1_xy3jbb.png"
+        "bg_start_1.png"
   },
   {
     "title1": "Create a workout plan",
     "title2": " to stay fit",
     "image":
-        "https://res.cloudinary.com/dwu92ycra/image/upload/v1700204587/Gym-app/bg_start_2_sulywq.png"
+    "bg_start_2.png"
   },
   {
     "title1": "Action is the",
     "title2": "key to all success",
     "image":
-        "https://res.cloudinary.com/dwu92ycra/image/upload/v1700204587/Gym-app/bg_start_3_jcsc2e.png"
+    "bg_start_3.png"
   },
 ];
 List<Map<String, dynamic>> lessons = [
@@ -321,7 +321,7 @@ List<Map<String, dynamic>> dataWorkout = [
   },
   {
     "workout": {
-      "namePlan": "Day 01 - Warm Up",
+      "namePlan": "Learn the Basic of Training",
       "thumbnail":
           "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
       "background":
@@ -371,13 +371,13 @@ List<Map<String, dynamic>> dataWorkout = [
   },
   {
     "workout": {
-      "namePlan": "Day 01 - Warm Up",
+      "namePlan": "Wake Up Call",
       "thumbnail":
           "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
       "background":
           "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
       "category": "beginner",
-      "describe": "06 Workouts  for Beginner",
+      "describe": "04 Workouts  for Beginner",
       "description":
           "Want your body to be healthy. Join our program with directions according to body’s goals. Increasing physical strength is the goal of strenght training. Maintain body fitness by doing physical exercise at least 2-3 times a week.",
       "totalTime": 60,
@@ -421,13 +421,13 @@ List<Map<String, dynamic>> dataWorkout = [
   },
   {
     "workout": {
-      "namePlan": "Day 01 - Warm Up",
+      "namePlan": "Full Body Goal Crusher",
       "thumbnail":
           "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
       "background":
           "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
       "category": "beginner",
-      "describe": "06 Workouts  for Beginner",
+      "describe": "07 Workouts  for Beginner",
       "description":
           "Want your body to be healthy. Join our program with directions according to body’s goals. Increasing physical strength is the goal of strenght training. Maintain body fitness by doing physical exercise at least 2-3 times a week.",
       "totalTime": 60,

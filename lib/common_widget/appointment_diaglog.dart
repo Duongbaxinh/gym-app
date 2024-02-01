@@ -23,10 +23,12 @@ class AppointmentDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: 
+      Container(
         constraints: const BoxConstraints(
           minHeight: 322,
-          maxHeight: 350
+          maxHeight: 350,
+          minWidth: 450
         ),
         child: AlertDialog(
           shape:
@@ -35,12 +37,15 @@ class AppointmentDialog extends StatelessWidget {
           shadowColor: Colors.red,
           actions: [
             Center(child: ButtonCustom(title: titleButton, fn: fn,icon:icon)),
-            const SizedBox(height: 30,),
-            Center(child: TextButton(onPressed: () {
-              Navigator.pop(context,'Cancel');
-            },
-                child:  Text('Cancel',
-                  style: Theme.of(context).textTheme.headline4,)))
+            const SizedBox(height: 15,),
+            Container(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: Center(child: TextButton(onPressed: () {
+                Navigator.pop(context,'Cancel');
+              },
+                  child:  Text('Cancel',
+                    style: Theme.of(context).textTheme.headline4,))),
+            )
           ],
           content: Column(
             children: [

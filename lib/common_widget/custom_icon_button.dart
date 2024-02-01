@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-class CustomeIconButton extends StatelessWidget{
+class IconButtonCustom extends StatelessWidget{
   final String imageIcon;
   final VoidCallback fn;
-  const CustomeIconButton({super.key, required this.imageIcon, required this.fn});
+  const IconButtonCustom({super.key, required this.imageIcon, required this.fn});
   @override
   Widget build(BuildContext context){
     return  Container(
-      width: 30,
-      height: 30,
+      width: 50,
+      height: 50,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Theme.of(context).colorScheme.onSecondaryContainer

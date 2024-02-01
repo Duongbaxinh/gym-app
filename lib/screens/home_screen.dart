@@ -1,20 +1,13 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_app/block/lesson_provider.dart';
 import 'package:project_app/block/models/trainer_model.dart';
 import 'package:project_app/block/models/work_plan_model.dart';
-import 'package:project_app/block/review_provider.dart';
-import 'package:project_app/block/schedule_provider.dart';
 import 'package:project_app/block/trainer_provider.dart';
 import 'package:project_app/block/user_provider.dart';
 import 'package:project_app/block/workout_plan_provider.dart';
 import 'package:project_app/common_widget/card_lesson.dart';
 import 'package:project_app/common_widget/custome_listTitle.dart';
-import 'package:project_app/common_widget/group_button.dart';
 import 'package:project_app/common_widget/new_workcount_card.dart';
-import 'package:project_app/constant/list_data_start.dart';
 import 'package:project_app/screens/detail_lesson_screen.dart';
 import 'package:project_app/screens/detail_trainer_screen.dart';
 import 'package:project_app/screens/fitness_trainers_screen.dart';
@@ -23,26 +16,8 @@ import 'package:project_app/util/formatDate.dart';
 import 'package:project_app/widgetGroup/workout_category.dart';
 import 'package:provider/provider.dart';
 
-Map<String, dynamic> user = {
-  "name": "Sara",
-  "avatar": "",
-};
-Map<String, dynamic> lesson = {
-  "title": "Day 01 Warm Up",
-  "time": " 7:00 - 8:00",
-  "thumbnail":
-      "https://res.cloudinary.com/dwu92ycra/image/upload/v1700754573/Gym-app/Image_8_anwrvg.png",
-  "video": "",
-  "trainer": {
-    "id": "",
-    "name": "",
-    "experiences": "",
-  }
-};
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<StatefulWidget> createState() {
     return _HomePageState();
@@ -52,16 +27,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    String category = 'beginner';
     final workPlanProvider = Provider.of<WorkOutPlanProvider>(context);
     final trainerProvider = Provider.of<TrainerProvider>(context);
     final userProvider = Provider.of<UserProvide>(context);
-    final scheduleProvider = Provider.of<ScheduleProvider>(context);
     Future<Map<String, dynamic>> getBoth() async {
       Map<String, dynamic> providerData = {};
       List<TrainerModel> trainers = await trainerProvider.getAllTrainer();
       List<WorkPlanModel> workOutPlan = await workPlanProvider.getAllWorkOut();
-      // await scheduleProvider.addSchedule(schedulesData);
       Map<String, dynamic> userInfo =
           await userProvider.getUserInfo('userInfo');
       providerData['workOutPlan'] = workOutPlan;
@@ -99,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                               style: titleStyle,
                             ),
                             subtitle: Text(
-                              'Good morning',
+                              'Good afternoon',
                               style: subStyle,
                             ),
                           ),
@@ -124,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(15)),
                                   child: CardLesson(
-                                    state: workPlanModel.state,
+                                      state: workPlanModel.state,
                                       titleLesson: workPlanModel.namePlan,
                                       subLesson: workPlanModel.timeDetail,
                                       thumbnail: workPlanModel.thumbnail),
@@ -152,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                               CustomListTitle(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 15),
-                                  title: 'Workout Categories',
+                                  title: 'Trainers',
                                   sub: 'See All',
                                   fn: () {
                                     Navigator.push(
@@ -165,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                                   }),
                               SizedBox(
                                 width: MediaQuery.of(context).size.width,
-                                height: 200,
+                                height: 350,
                                 child: ListView.separated(
                                     scrollDirection: Axis.horizontal,
                                     itemBuilder: (context, index) => InkWell(
@@ -183,10 +155,10 @@ class _HomePageState extends State<HomePage> {
                                                 ));
                                           },
                                           child: CardNewWorkout(
-                                            title: trainers[index].name,
+                                            title: trainers[index].name!,
                                             sub: trainers[0].specializeIn!,
                                             thumbnail:
-                                                trainers[index].background,
+                                                trainers[index].background!,
                                             fn: (String value) {},
                                           ),
                                         ),

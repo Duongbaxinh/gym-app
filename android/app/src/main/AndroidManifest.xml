@@ -1,7 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package = "com.example.project_app">
     <application
         android:allowBackup="false"
-        android:label="project_app"
+        android:label="Muscle App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
